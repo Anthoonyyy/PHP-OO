@@ -35,7 +35,7 @@ abstract class PersoAbstract {
 
             // plus courant, des méthodes qui seront obligatoires pour tous les persos
             abstract public function attack($enemy);
-            abstract public function defence($enemy);
+            abstract public function defence();
 
 
 

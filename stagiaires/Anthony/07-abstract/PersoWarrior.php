@@ -24,6 +24,31 @@ class PersoWarrior extends PersoAbstract{
         
     }
 
+    /*
+    Actions
+    */
+    public function attack($enemy)
+    {
+        // notre attaque
+        $attackEnemy = $this->getAgility() + $this->throwBigDice(4);
+        // défense de l'ennemie
+       $defenseEnemy = $enemy->defence();
+
+       if($attackEnemy > $defenseEnemy){
+         $wound = ($attackEnemy - $defenseEnemy) + ($this->getStrength()-$enemy->getStrength());
+        $healthEnemy = $this->getHealthPoint() - $wound;
+        $enemy->setHealthPoint($healthEnemy);
+        return "{$this->getName()} a blessé {$enemy->getName()}";
+       }
+
+    }
+    public function defence()
+    {
+       $defense = $this->getAgility() + $this->throwBigDice(4);
+    }
+    
+
+
 
     public function getHealthPoint(): int 
     {
@@ -42,16 +67,7 @@ class PersoWarrior extends PersoAbstract{
         $this->experience = $experience;
      }
 
-     public function attack($enemy)
-     {
-        
-     }
-     public function defence($enemy)
-     {
-        
-     }
-     
-
+  
    
     public function getStrength(): int
     {
