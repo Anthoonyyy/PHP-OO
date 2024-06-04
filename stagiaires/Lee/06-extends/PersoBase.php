@@ -81,6 +81,15 @@ class PersoBase{
             return $this->alive;
         }
 
+        //get force
+        public function getForce() : int {
+            return $this->force;
+        }
+
+        //get agilite
+        public function getAgilite() : int {
+            return $this->agilite;
+        }
         // Setters - Mutators
 
         // Setter de name
@@ -157,6 +166,29 @@ class PersoBase{
                 $this->espece = $espece;
             }else{
                 throw new Exception("Tu fais quoi là!",334);
+            }
+        }
+
+        // Set force
+        public function setForce (int $theForce) : void  {
+            if(!is_int($theForce)) {
+                throw new Exception('Force doit être un chiffre', 339);
+            }else if ($theForce <= 0) {
+                throw new Exception('Force doit être un chiffre positif', 340);
+            }else  {
+                $this->force = $theForce;
+            }
+        }
+
+        
+        // Set agilite
+        public function setAgilite (int $theAgilite) : void  {
+            if(!is_int($theAgilite)) {
+                throw new Exception('Agilite doit être un chiffre', 341);
+            }else if ($theAgilite <= 0) {
+                throw new Exception('Agilite doit être un chiffre positif', 342);
+            }else {
+                $this->agilite = $theAgilite;
             }
         }
 

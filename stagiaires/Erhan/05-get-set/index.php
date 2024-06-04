@@ -42,32 +42,37 @@ try{
 var_dump($perso03A);
 
 
-$perso03A->setName("Medhi");
-echo $perso03A->getName();
-echo "<hr>";
+try{
+    $perso03A->setName("Erhan");
+    $perso03A->setHp(22);
+    $perso03A->setAge(25);
+    $perso03A->setXp(15);
+    $perso03A->setLevel(3);
+    $perso03A->setEspece("Humain");
+    $perso03A->setAlive(15);
+}catch(Exception $e){
+    echo $e->getCode()." ".$e->getMessage();
+}
 
-$perso03A->setHp(22);
-echo $perso03A->getHp();
-echo "<hr>";
 
-$perso03A->setAge(25);
-echo $perso03A->getAge();
-echo "<hr>";
+try{
+    echo $perso03A->getName();
+    echo "<hr>";
+    echo $perso03A->getHp();
+    echo "<hr>";
+    echo $perso03A->getAge();
+    echo "<hr>";
+    echo $perso03A->getXp();
+    echo "<hr>";
+    echo $perso03A->getLevel();
+    echo "<hr>";
+    echo $perso03A->getEspece();
+    echo "<hr>";
+    echo gettype($perso03A->getAlive());
+}catch(Exception $e){
+    echo $e->getCode()." ".$e->getMessage();
+}
 
-$perso03A->setXp(15);
-echo $perso03A->getXp();
-echo "<hr>";
-
-$perso03A->setLevel(3);
-echo $perso03A->getLevel();
-echo "<hr>";
-
-$perso03A->setEspece("Humain");
-echo $perso03A->getEspece();
-echo "<hr>";
-
-$perso03A->setAlive("coucou");
-echo gettype($perso03A->getAlive());
 ?>
 </body>
 </html>

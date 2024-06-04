@@ -1,7 +1,9 @@
 <?php
 
-class PersoClass03 {
+class PersoBase {
     //Propriétés
+    protected int $force = 100;
+    protected int $agilite = 100;
     protected string $name;
     protected ?int $hp;
     protected int $age;
@@ -22,21 +24,37 @@ class PersoClass03 {
     //Méthodes
 
        //constructeur
-    public function __construct(string $name, int $hp, int $age, int $xp, int $level, string $espece, null|bool|int $alive )
+    public function __construct(string $name, int $age, string $espece )
     {
-    //$this->name = $name;
-    $this->setName($name);
-    $this->setHp($hp);
-    $this->setAge($age);
-    $this->setXp($xp);
-    $this->setLevel($level);
-    $this->setEspece($espece);
-    $this->setAlive($alive);
+        //$this->name = $name;
+        $this->setName($name); // correcte
+        $this->setAge($age);
+        $this->setEspece($espece);
+        $this->setAlive(true);
     }    
+
+
+    public function __toString()
+    {
+        return self::class." ".$this::class." ".
+        $this->getName();
+    }
 
 
        
     //Getters - Accessors
+
+    //getters de $force
+    public function getForce(): int
+    {
+        return $this->force;
+    }
+
+    //getters de $agilite
+    public function getAgilite(): int
+    {
+        return $this->agilite;
+    }
 
     //getters de $name
     public function getName(): string
@@ -84,6 +102,24 @@ class PersoClass03 {
 
 
     //Setters - Mutators
+
+    //setter de force
+    public function setForce(int $theforce): void
+    {
+        if($theforce<=0){
+            throw new Exception("La force ne peut pas être négative", 339);
+        }
+        $this->force = $theforce;        
+    }
+
+    //setter de agilite
+    public function setAgilite(int $theagilite): void
+    {
+        if($theagilite<=0){
+            throw new Exception("Int positif uniquement", 335);
+        }
+        $this->agilite = $theagilite;        
+    }
     
     //setter de name
     public function setName(string $thename){
@@ -139,15 +175,21 @@ class PersoClass03 {
     } 
 
     //setter de alive
-    public function setAlive(string|bool|null|int $alive): void
+    public function setAlive(bool|null|int $alive): void
     {
-        if(is_null($alive)||is_string($alive)){
+        if(is_null($alive)){
             $this->alive = null;
         }elseif($alive===0){
             $this->alive = false;
         }elseif($alive===1){
             $this->alive = true;
-        }elseif($alive>1)
-            $this->alive = $alive;        
+        }else{
+            $this->alive = $alive; 
+        }       
+    }
+
+    //tout les personnage peuvent avancer
+    public function persoAvance(){
+        return "Le personnage {$this} avance";
     }
 }
