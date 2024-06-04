@@ -2,7 +2,30 @@
 
 class PersoWarrior extends PersoAbstract{
     
-    public function getHealthPoint(): ?int 
+    // Propriétés d'un guerrier
+    protected int $strength = 100;
+    protected int $resistance = 100;
+    protected int $agility = 80;
+    // On a hérité du constructeur de PersoAbstract, on va le surcharger
+
+    public function __construct(string $thename,string $theEspece)
+    {
+        // vient de la classe parent (PersoAbstract)
+        parent::__construct($thename,$theEspece);
+
+        // surcharge
+        $strength = $this->getStrength();
+        $this->setStrength( $strength += self::throwSmallDice(3));
+        $resistance = $this->getResistance();
+        $this->setResistance($resistance += self::throwSmallDice(3));
+        $agility = $this->getAgility();
+        $this->setAgility($agility += self::throwSmallDice(2));
+
+        
+    }
+
+
+    public function getHealthPoint(): int 
     {
         return $this->healthPoint;
      }
@@ -28,4 +51,40 @@ class PersoWarrior extends PersoAbstract{
         
      }
      
+
+   
+    public function getStrength(): int
+    {
+        return $this->strength;
+    }
+
+    
+    protected function setStrength( int $strength)
+    {
+        $this->strength = $strength;
+    }
+
+     
+    public function getResistance(): int 
+    {
+        return $this->resistance;
+    }
+
+    
+    protected function setResistance( int $resistance)
+    {
+        $this->resistance = $resistance;
+    }
+
+    
+    public function getAgility(): int 
+    {
+        return $this->agility;
+    }
+
+   
+    protected function setAgility( int $agility)
+    {
+        $this->agility = $agility;
+    }
 }

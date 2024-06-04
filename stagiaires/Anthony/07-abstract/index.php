@@ -23,10 +23,11 @@ require_once "PersoWarrior.php";
     <h3>Un héritier doit créer les méthodes abstraites</h3>
     <?php
     $persoWarrior1 = new PersoWarrior("Anthony","Sorcier");
-     $persoWarrior1->setHealthPoint(120);
-     echo $persoWarrior1->getHealthPoint();
+    $persoWarrior2 = new PersoWarrior("Samy","Elfe");
+    // $persoWarrior1->setHealthPoint(120);
+    // echo $persoWarrior1->getHealthPoint();
 
-    var_dump($persoWarrior1);
+    var_dump($persoWarrior1,$persoWarrior2);
 
     ?>
 </body>
