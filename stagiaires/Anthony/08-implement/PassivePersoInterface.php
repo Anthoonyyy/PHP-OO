@@ -1,6 +1,6 @@
 <?php
 // l'interface ne peut contenir que des méthodes publiques
-interface PassifPersoInterface{
+interface PassivePersoInterface{
     // un perso peut être blessé
     public function isHurt();
     // un perso peut mourir
@@ -12,3 +12,4 @@ interface PassifPersoInterface{
     
   
 }
+
